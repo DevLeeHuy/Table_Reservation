@@ -1,0 +1,50 @@
+<div class="container edit-delete-container">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title bg-dark">
+        <h2>Choose <b>Restaurant</b></h2>
+
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+         
+          </tr>
+        </thead>
+        <tbody>
+          {{#if session.myRestaurant}}
+            {{#each session.myRestaurant}}
+
+              <tr>
+
+                <td>{{resID}}</td>
+                <td>{{resName}}</td>
+                <td>{{resAddress}}</td>
+                <td>{{resPhone}}</td>
+               
+
+                <td>
+                  <a
+                    href="/manager/Menu?id={{resID}}"
+                    class="btn btn-primary"
+                    style="color:white;"
+                  >Choose</a>
+
+                </td>
+              </tr>
+
+            {{/each}}
+
+          {{/if}}
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

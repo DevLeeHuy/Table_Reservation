@@ -1,0 +1,21 @@
+.eachRes {
+  width: 100%;
+}
+
+div > span > svg > g:last-of-type {
+  display: none;
+}
+
+.chart-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.pieChart {
+  width: 50%;
+  height: 300px;
+}
+.colChart {
+  width: 100%;
+  height: 500px;
+}

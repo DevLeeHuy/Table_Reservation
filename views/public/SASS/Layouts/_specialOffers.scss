@@ -1,0 +1,41 @@
+.sepcialOffers {
+    width: 80%;
+    margin: auto;
+    .sepcialOffers__title {
+        position: relative;
+        padding-left: 50px;
+        margin: $mg-1 0;
+        @include styleText($color-red, $fs-3, $fw-bold);
+    }
+    .specialOffers__content {
+        position: relative;
+        a{
+            text-decoration: none;
+        }
+        .card {
+            margin: 0 3px 3px;
+            @include styleShadowHover();
+        }
+        .card-title {
+            @include styleText($color-orange, $fs-1, $fw-bold);
+        }
+        .card-text {
+            @include styleText($color-black-0, $fs-0, $fw-bold);
+        }
+        .card-text:last-child {
+            font-size: $fs-0 - 2px;
+            font-weight: $fw-normal;
+        }
+    }
+}
+.sepcialOffers__title::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 41px;
+    height: 22px;
+    background-image: url("../img/hottag.jpg");
+    background-size: cover;
+    background-position: center;
+}

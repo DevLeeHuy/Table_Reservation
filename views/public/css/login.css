@@ -1,0 +1,21 @@
+*{
+    padding:0;
+    margin:0;
+}
+.content{
+    width:30% !important;
+}
+.password-input{
+    margin-left:5px;
+}
+.login-input input{
+    width:95%;
+}
+.login-via{
+    position: relative;
+}
+.login-via i{
+    position:absolute;
+    left:10px !important;
+    margin-top:4px;
+}

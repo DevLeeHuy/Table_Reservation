@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="/css/MenuDesigner.css" />
+<div class="main-content">
+  <div class="menu-container">
+    <div class="header">
+      <div class="title">Menu</div>
+    </div>
+    <div class="indicators">
+      <div id="i1">
+        <div class="navi-indicator" id="ni1"></div>
+      </div>
+      <div id="i2">
+        <div class="navi-indicator" id="ni2"></div>
+      </div>
+      <div id="i3">
+        <div class="navi-indicator" id="ni3"></div>
+      </div>
+      <div id="i4">
+        <div class="navi-indicator" id="ni4"></div>
+      </div>
+    </div>
+    <div class="navi">
+      <div class="navi-item1">
+        <button class="nav-button" id="startersbutton">
+          <div class="navi-icon"><i class="fas fa-seedling"></i></div>
+          <div class="navi-text">Starters</div>
+        </button>
+      </div>
+      <div class="navi-item2">
+        <button class="nav-button" id="mainsbutton">
+          <div class="navi-icon"><i class="fas fa-pizza-slice"></i></div>
+          <div class="navi-text">Mains</div>
+        </button>
+      </div>
+      <div class="navi-item3">
+        <button class="nav-button" id="dessertsbutton">
+          <div class="navi-icon"><i class="fas fa-ice-cream"></i></div>
+          <div class="navi-text">Desserts</div>
+        </button>
+      </div>
+      <div class="navi-item4">
+        <button class="nav-button" id="drinksbutton">
+          <div class="navi-icon"><i class="fas fa-wine-glass-alt"></i></div>
+          <div class="navi-text">Drinks</div>
+        </button>
+      </div>
+    </div>
+    <div class="menu">
+
+    </div>
+  </div>
+
+  <div class="menu-designer">
+    <h3>
+      Type:
+      <select name="" id="type">
+        <option value="starter">starter</option>
+        <option value="main">main</option>
+        <option value="desert">desert</option>
+        <option value="drink">drink</option>
+      </select>
+    </h3>
+    <h3>Name: <input type="text" name="" id="name" /></h3>
+    <h3>Description: <input type="text" name="" id="description" /></h3>
+    <input type="button" value="ADD" class="btn btn-primary" id="add-btn" />
+    <form action="" class="mt-4 saveForm" method="post">
+      <input type="hidden" name="id" value="{{this.resID}}" />
+      <textarea
+        style="display: none"
+        name="menu"
+        id="MenuData"
+        cols="30"
+        rows="10"
+      >{{this.menuData}}</textarea>
+      <input type="submit" value="SAVE" class="btn btn-info" />
+      <a href="/manager/DesignMenu" class="btn btn-danger">CANCEL</a>
+    </form>
+  </div>
+</div>
+
+<script src="/js/MenuDesigner.js"></script>

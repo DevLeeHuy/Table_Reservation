@@ -1,0 +1,95 @@
+<div class="container edit-delete-container">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title bg-dark">
+        <h2> <b>{{TableTitle}} </b></h2>
+        <!-- <div class="row">
+                            <div class="col-xs-6">
+                                <h2>Manage <b>Employees</b></h2>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
+                                        class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
+                                        class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+                            </div>
+                        </div> -->
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            {{! <th>
+              <span class="custom-checkbox">
+                <input type="checkbox" id="selectAll" />
+                <label for="selectAll"></label>
+              </span>
+            </th> }}
+            <th>Reservation ID</th>
+            <th>Diner Name</th>
+            <th>Restaurant</th>
+            <th>Phone</th>
+            <th>Check in</th>
+            <th>Number of Diners</th>
+            <th>Note</th>
+            <th>Discount</th>
+            {{#if confirm}}<th>Confirm</th>{{/if}}
+          </tr>
+        </thead>
+        <tbody>
+          {{#if this.BookingList}}
+            {{#each this.BookingList}}
+
+              <tr>
+                {{! <td>
+                  <span class="custom-checkbox">
+                    <input
+                      type="checkbox"
+                      id="checkbox1"
+                      name="options[]"
+                      value="1"
+                    />
+                    <label for="checkbox1"></label>
+                  </span>
+                </td> }}
+                <td>{{id}}</td>
+                <td>{{userFName}}</td>
+                <td>{{resName}}</td>
+                <td>{{userPhone}}</td>
+                <td>{{dateFormat ReserveTime}}</td>
+                <td>{{NumOfDiners}}</td>
+                <td>{{Note}}</td>
+                <td>{{#if vouValue}}<b>{{vouValue}}%</b>{{/if}}</td>
+                {{#if ../confirm}}<td>
+                  <a
+                    href="/manager/confirm?id={{id}}&rid={{rid}}&time={{ReserveTime}}"
+                    class="confirm"
+                  ><i class="fas fa-check-square" title="Confirm"></i></a>
+                  <a
+                    href="/manager/cancel?id={{id}}"
+                    class="delete"
+                    role="button"
+                  ><i class="fas fa-window-close" title="Cancel"></i></a>
+                </td>
+              </tr>{{/if}}
+
+            {{/each}}
+
+          {{/if}}
+
+        </tbody>
+      </table>
+      {{! <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+          <li class="page-item disabled"><a href="#">Previous</a></li>
+          <li class="page-item"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item active"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+      </div> }}
+    </div>
+  </div>
+</div>

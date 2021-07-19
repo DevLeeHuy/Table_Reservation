@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="css/admin_dashboard.css" />
+<div class="card-list">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+      <div class="card blue">
+        <div class="title">ALL DINERS</div>
+        <i class="zmdi zmdi-upload"></i>
+        <div class="value">{{session.statistic.diners}}</div>
+        <div class="stat"><b>13</b>% increase</div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+      <div class="card green">
+        <div class="title"> RESTAURANT MANAGERS </div>
+        <i class="zmdi zmdi-upload"></i>
+        <div class="value">{{session.statistic.managers}}</div>
+        <div class="stat"><b>4</b>% increase</div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+      <div class="card orange">
+        <div class="title">TOTAL RESTAURANTS</div>
+        <i class="zmdi zmdi-download"></i>
+        <div class="value">{{session.statistic.restaurants}}</div>
+        <div class="stat"><b>13</b>% decrease</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div id="piechart" class="col-8" style="height: 500px;"></div>
+  </div>
+</div>
+<input type="hidden" name="" id="males" value="{{session.statistic.male}}" />
+<input
+  type="hidden"
+  name=""
+  id="females"
+  value="{{session.statistic.female}}"
+/>
+<script
+  src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"
+></script>
+<script
+  src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"
+></script>
+<script src="js/admin_dashboard.js"></script>

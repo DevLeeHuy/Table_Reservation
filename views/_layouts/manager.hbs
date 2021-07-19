@@ -1,0 +1,241 @@
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Manager Page</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="/css/chatbox.css" />
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="/css/adminpage.css" rel="stylesheet" />
+    {{{_sections.css}}}
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <ul
+        class="navbar-nav bg-dark sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+      >
+
+        <!-- Sidebar - Brand -->
+        <a
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+          href="/"
+        >
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">Manager <sup>page</sup></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="/manager">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Interface
+        </div>
+
+        <li class="nav-item add_product">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseTwo"
+            aria-expanded="true"
+            aria-controls="collapseTwo"
+          >
+            <i class="fas fa-plus"></i>
+            <span class="">Add Restaurant</span>
+          </a>
+
+        </li>
+
+        <li class="nav-item manage_product">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUtilities"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-list-alt"></i>
+            <span class="">Manage Restaurant</span>
+          </a>
+
+        </li>
+        <li class="nav-item booking_list">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUtilities"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-list"></i>
+            <span class="">Booking List</span>
+          </a>
+
+        </li>
+        <li class="nav-item history">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUtilities"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-list"></i>
+            <span class="">History booking</span>
+          </a>
+
+        </li>
+        <li class="nav-item design_menu">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUtilities"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-hamburger"></i>
+            <span class="">Design menu</span>
+          </a>
+
+        </li>
+        <li class="nav-item voucher-generator">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseUtilities"
+            aria-expanded="true"
+            aria-controls="collapseUtilities"
+          >
+            <i class="fas fa-percentage"></i>
+            <span class="">Voucher</span>
+          </a>
+
+        </li>
+
+        <hr class="sidebar-divider" />
+        <a href="/" class="btn-secondary pl-4">HOME</a>
+      </ul>
+
+      {{{body}}}
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+    <!-- End of Page Wrapper -->
+
+    {{! CHATBOX }}
+    <div id="chat-bot">
+      <div class="messenger br10">
+        <div class="timestamp">04:45 AM</div>
+        <div class="chatroom">
+
+          <!-- msgs  -->
+        </div>
+        <div class="type-area">
+          <input type="text" class="typing" placeholder="Type Here..." />
+          <span class="send">
+            <i class="fas fa-paper-plane"></i>
+          </span>
+        </div>
+      </div>
+      <div class="icon">
+        <div class="user">
+          <i class="fas fa-utensils"></i>
+          Customer Consulting
+        </div>
+        <i class="fab fa-facebook-messenger"></i>
+      </div>
+    </div>
+    <input type="hidden" id="rid" value="{{user.userID}}" />
+    <input type="hidden" id="uid" value="{{user.userID}}" />
+    <input type="hidden" id="type" value="Manager" />
+
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; Your Website 2020</span>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/vendor/jquery/jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chatbox.js"></script>
+
+    {{! Socket io for booking notification }}
+    <script src="/js/notifiers.js"></script>
+
+    <!-- Scroll to Top Button-->
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+
+    <script src="/js/manager.js"></script>
+
+  </body>
+
+</html>

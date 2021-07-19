@@ -1,0 +1,76 @@
+.tableCarousel {
+    display: block;
+    background: url("../img/banner.jpg") no-repeat center center;
+    background-size: cover;
+    height: 400px;
+    position: relative;
+    .tableCarousel__content {
+        width: 80%;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        position: absolute;
+        z-index: 1;
+        .tableCarousel__logo {
+            width: 120px;
+            height: 120px;
+            @include styleButton($color-orange, $color-trans, $pd-2, $pd-2, 50%);
+            h3 {
+                @include styleText($color-white-0, $fs-2, $fw-normal);
+                margin-top: $mg-1 + 3px;
+                margin-bottom: 0;
+            }
+            span {
+                @include styleText($color-white-0, $fs-0 - 3px, $fw-normal);
+                white-space: nowrap;
+            }
+        }
+        .tableCarousel__title {
+            margin-top: $mg-1 + 5px;
+            margin-bottom: $mg-1 + 5px;
+            @include styleText($color-white-0, $fs-5, $fw-normal);
+            h3 {
+                font-size: $fs-5;
+            }
+            span {
+                font-size: $fs-1;
+                font-weight: $fw-bold;
+                i {
+                    margin: 0 $mg-0;
+                }
+            }
+        }
+        .tableCarousel__search {
+            .input-group {
+                .form-control {
+                    font-size: $fs-2;
+                    background-clip: unset;
+                    border-radius: unset;
+                    padding: $pd-2 + 10px;
+                    &:focus {
+                        border-color: $color-trans;
+                        box-shadow: none;
+                    }
+                }
+                .input-group-text {
+                    text-decoration: none;
+                    i {
+                        margin-right: $mg-0;
+                    }
+                    @include styleText($color-white-0, $fs-2, $fw-bold);
+                    @include styleButton($color-orange, $color-trans, 0, $pd-2, 0);
+                }
+            }
+        }
+    }
+}
+.tableCarousel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 0;
+}

@@ -1,0 +1,291 @@
+{{#section 'js'}}
+<script src="js/homepage.js"></script>
+{{/section}}
+
+<section class="tableCarousel">
+  <div class="tableCarousel__content">
+    <div class="tableCarousel__logo">
+      <img src="/img/logo2.png" alt="" style="width:100%;height:100%">
+    </div>
+    <div class="tableCarousel__title">
+      <div class="row">
+        <div class="col text-left">
+          <h3>
+            Tìm nhà hàng, đặt chỗ, khuyến mãi...</h3>
+        </div>
+        <div class="col-auto">
+          <span> <i class="fa fa-phone"></i> 8 000 000 VND</span>
+          <span> <i class="fa fa-clock"></i> 08:00 AM - 09:00 PM</span>
+        </div>
+      </div>
+    </div>
+    <form method="post" action="/search" class="tableCarousel__search">
+      <div class="input-group">
+        <input name="searchInput" type="text" class="form-control" placeholder="Tìm nhà hàng, đặt chỗ, ưu đãi..."
+          aria-label="Recipient's username" aria-describedby="basic-addon2" />
+        <button type="submit" class="input-group-append d-block input-group-text">
+          <i class="fa fa-search"></i>
+          Find a table
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</section>
+<section class="sepcialOffers mb-5 mt-4" id="uuDai">
+  <h3 class="sepcialOffers__title">ƯU ĐÃI ĐẶC BIỆT</h3>
+  <div class="specialOffers__content">
+    <div class="owl-carousel owl-theme owl-specialOffer">
+      {{#each this.listResHaveVoucher}}
+          <a href="">
+        <div class="card text-white">
+          <img height="250"class="card-img-top" src="/img/restaurant/{{resThumbnail}}" alt="" />
+          <div class="card-body">
+            <h4 class="card-title pb-2 border-bottom">Giảm {{vouValue}}% tổng hóa đơn khi
+              đặt chỗ</h4>
+            <p class="card-text">{{resName}}</p>
+            <p class="card-text">{{resAddress}}</p>
+          </div>
+        </div>
+      </a>
+      {{/each}}
+     
+      {{!-- <a href="">
+        <div class="card text-white ">
+          <img class="card-img-top" src="/img/res2.jpg" alt="" />
+          <div class="card-body">
+            <h4 class="card-title pb-2 border-bottom">Giảm 20% tổng hóa đơn khi
+              đặt chỗ</h4>
+            <p class="card-text">Volcano Cocktail Bar</p>
+            <p class="card-text">Tầng 2, 68 Ngô Đức Kế, P Bến Thành, Quận 1,
+              Tp.HCM</p>
+          </div>
+        </div>
+      </a>
+      <a href="">
+        <div class="card text-white">
+          <img class="card-img-top" src="/img/res1.jpg" alt="" />
+          <div class="card-body">
+            <h4 class="card-title pb-2 border-bottom">Giảm 20% tổng hóa đơn khi
+              đặt chỗ</h4>
+            <p class="card-text">Switch Restaurent</p>
+            <p class="card-text">Tầng 2, 68 Ngô Đức Kế, P Bến Thành, Quận 1,
+              Tp.HCM</p>
+          </div>
+        </div>
+      </a> --}}
+      {{!-- <a href="">
+        <div class="card text-white">
+          <img class="card-img-top" src="img/res1.jpg" alt="" />
+          <div class="card-body">
+            <h4 class="card-title pb-2 border-bottom">Giảm 20% tổng hóa đơn khi
+              đặt chỗ</h4>
+            <p class="card-text">Switch Restaurent</p>
+            <p class="card-text">Tầng 2, 68 Ngô Đức Kế, P Bến Thành, Quận 1,
+              Tp.HCM</p>
+          </div>
+        </div>
+      </a> --}}
+    </div>
+  </div>
+</section>
+<section class="listTable border" id="nhaHang">
+  <div class="listTable__top">
+    <div class="listTable__title">
+      <h3>ĐỊA ĐIỂM</h3>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Tìm danh mục
+      </button>
+      <div class="dropdown-menu">
+        {{#each listCate }}
+        <a href="/search/byCate?cate={{cateID}}" class="res_cate dropdown-item">{{cateName}}</a>
+
+        {{/each}}
+        {{!-- <a href="/search/byCate?cate=2" class="res_cate dropdown-item">Món Âu</a>
+        <a href="/search/byCate?cate=3" class="res_cate dropdown-item">Món Nhật</a>
+        <a href="/search/byCate?cate=4" class="res_cate dropdown-item">Món Thái</a> --}}
+      </div>
+    </div>
+  </div>
+  <div class="listTable__content">
+    <div class="row">
+      {{#each this.listRestaunrant}}
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 listTable__card mb-4 mt-4">
+        <div class="card text-white h-100 ">
+          <div class="card-img">
+            <img class="card-img-top " height="200" src="/img/restaurant/{{resThumbnail}}" alt="" />
+            <div class="card-overlay">
+              <a href="/resDetail?id={{resID}}"><button>Đặt ngay</button></a>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="card-title border-bottom">
+              <p class="card-text">{{resName}}</p>
+              <p class="card-text">{{resAddress}}</p>
+            </div>
+            <h4 class="card-subtitle pb-2"><span>{{resOpen}} --> {{resClose}}
+                <span style="color: black;">-</span></span>
+            </h4>
+          </div>
+          <span class="ml-4 mb-2" style="color: black; font-weight: bold;">{{#compare rating 0}}
+            Chưa có đánh giá
+            {{else}}
+            {{rating}}/10⭐
+            {{/compare}}
+          </span>
+          <a href="/favorite/{{resID}}" class="favorite-btn mb-0">
+            <button type="button" class="btn btn-outline-danger">
+              {{#if ../user}}
+              {{#if ../session.favoriteList}}
+              {{#exist resID ../session.favoriteList}}
+              <i class="fas fa-heart"></i>
+              {{else}}
+              <i class="far fa-heart"></i>
+              {{/exist}}
+              {{else}}
+              <i class="far fa-heart"></i>
+              {{/if}}
+              {{else}}
+              <i class="far fa-heart"></i>
+              {{/if}}
+            </button>
+          </a>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+</section>
+<section class="news mt-5 border" id="baiViet">
+  <div class="news__top">
+    <div class="news__title">
+      <h3>BÀI VIẾT</h3>
+    </div>
+  </div>
+  <div class="news__content">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 news_item">
+        <a href="https://www.now.vn/table/blog/huong-dan-at-ban-truc-tuyen-nowtable-tren-ung-dung-now"
+          class="news-link">
+          <div class="card text-white">
+            <img class="card-img-top" src="/img/news1.jpg" alt="huong dan dat ban" />
+            <div class="card-body">
+              <h4 class="card-title">Hướng Dẫn Đặt Bàn Trực Tuyến NowTable trên
+                ứng dụng Now
+              </h4>
+              <p class="card-text">07/08/2020 10:49</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 news_item">
+        <a href="https://www.now.vn/table/blog/5-ly-do-nen-at-ban-truoc-khi-an" class="news-link">
+          <div class="card text-white">
+            <img class="card-img-top" src="/img/news2.jpg" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">5 Lý Do Nên Đặt Bàn Trước Khi Đến Nhà Hàng
+                (Quán ăn)</h4>
+              <p class="card-text">21/08/2020 12:38</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 news_item news_hidden">
+        <a href="https://www.now.vn/table/blog/hcm-top-13-nha-hang-thai-lan-ngon-nhat-sai-gon" class="news-link">
+          <div class="card text-white">
+            <img class="card-img-top" src="/img/news3.jpg" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">(HCM) Top 13 Nhà Hàng Thái Lan Ngon Nhất
+                Sài Gòn</h4>
+              <p class="card-text">30/10/2020 14:36</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 news_item news_hidden">
+        <a href="#" class="news-link">
+          <div class="card text-white">
+            <img class="card-img-top" src="/img/news4.jpg" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">(HCM) Top 10 nhà hàng buffet trưa giá rẻ
+                cho dân văn phòng</h4>
+              <p class="card-text">14/06/2017 18:08</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 news_item news_hidden">
+        <a href="#" class="news-link">
+          <div class="card text-white">
+            <img class="card-img-top" src="/img/news5.jpg" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">Top 18 Nhà Hàng Steak Ngon Đặc Sắc Ở Sài
+                Gòn</h4>
+              <p class="card-text">21/06/2017 14:44</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 news_item news_hidden">
+        <a href="#" class="news-link">
+          <div class="card text-white">
+            <img class="card-img-top" src="/img/news6.jpg" alt="" />
+            <div class="card-body">
+              <h4 class="card-title">Top 23 Nhà Hàng Quận 3 Ngon Đặc Sắc</h4>
+              <p class="card-text">27/06/2017 18:24 </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+     <button class="btn-readmore"><i class="fa fa-caret-down"></i></button>
+  </div>
+</section>
+<section class="brandPartner mt-5 border">
+  <div class="brandPartner__top">
+    <div class="brandPartner__title">
+      <h3>CÁC THƯƠNG HIỆU ĐÃ HỢP TÁC</h3>
+    </div>
+  </div>
+  <div class="brandPartner__content">
+    <div class="owl-carousel owl-theme owl-brand">
+      <div class="img-item">
+        <img src="/img/brand1.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand2.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand3.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand4.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand5.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand6.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand7.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand8.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand9.jpg" alt="" />
+      </div>
+      <div class="img-item">
+        <img src="/img/brand10.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+</section>

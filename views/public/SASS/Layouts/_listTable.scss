@@ -1,0 +1,71 @@
+.listTable {
+    width: 80%;
+    margin: auto;
+    padding: 0 $pd-1;
+    background-color: $color-white-0;
+    .listTable__top {
+        display: flex;
+        // padding: $pd-2 0 0 0;
+        margin: $pd-2 0;
+        justify-content: space-between;
+        .listTable__title {
+            @include styleText($color-title, $fs-3, $fw-normal);
+        }
+    }
+    .listTable__content {
+        .listTable__card{
+            margin-bottom: $mg-1!important;
+            .card {
+                @include styleShadowHover();
+                .card-img {
+                    position: relative;
+                    transition: 0.6s;
+                    .card-overlay {
+                        display: none;
+                        z-index: 1;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.425);
+                        top: 0;
+                        left: 0;
+                        button {
+                            transform: translate(83%, 190%);
+                            @include styleText($color-white-0, $fs-1, $fw-normal);
+                            @include styleButton($color-orange, $color-trans, $pd-0, $pd-2, 3px);
+                        }
+                    }
+                    &:hover .card-overlay {
+                        display: block;
+                    }
+                }
+    
+                .card-body {
+                    padding-top: $pd-1 !important;
+    
+                    .card-subtitle {
+                        margin-top: $mg-0;
+                        margin-bottom: 0;
+                        @include styleText($color-orange, $fs-1, $fw-bold);
+                        span {
+                            @include styleText($color-blue, $fs-1, $fw-bold);
+                        }
+                    }
+                    .card-title {
+                        
+                        @include styleText($color-black-0, $fs-0, $fw-bold);
+                        padding-bottom: $pd-0 - 1px;
+                        .card-text{
+                            @include textLimit();
+                        }
+                        .card-text:last-child {
+                            font-size: $fs-0 - 2px;
+                            font-weight: $fw-normal;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

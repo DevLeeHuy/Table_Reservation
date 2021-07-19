@@ -1,0 +1,18 @@
+.form-group.invalid .form-input {
+  border-color: #f33a58;
+}
+
+.form-group.invalid .error-control {
+  color: #f33a58;
+}
+.rating {
+  font-size: 28px;
+  height: 100px;
+  line-height: 120px;
+  width: 125%;
+}
+
+.rating-btn:hover {
+  font-size: 40px;
+  cursor: pointer;
+}

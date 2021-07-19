@@ -1,0 +1,15 @@
+{
+  "mysql": {
+    "host": "freedb.tech",
+    "port": "3306",
+    "user": "freedbtech_lequanghuy",
+    "password": "0379004225Huy",
+    "database": "freedbtech_TableReservation"
+  },
+  "fbApp":{
+    "clientID": "141491161289849",
+    "clientSecret": "05f61a47d5c9b8dc62190369001fea8b",
+    "callbackURL": "http://localhost:3000/login/fb/cb",
+    "profileFields":["email","username"]
+  }
+}

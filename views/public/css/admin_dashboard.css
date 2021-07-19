@@ -1,0 +1,66 @@
+.card-list {
+  width: 100%;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.card-list:before,
+.card-list:after {
+  content: " ";
+  display: table;
+}
+.card-list:after {
+  clear: both;
+}
+.card {
+  border-radius: 8px;
+  color: white;
+  padding: 10px;
+  position: relative;
+  box-shadow: 0px 10px 5px rgb(206, 205, 205);
+}
+.card .zmdi {
+  color: white;
+  font-size: 28px;
+  opacity: 0.3;
+  position: absolute;
+  right: 13px;
+  top: 13px;
+}
+.card .stat {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 8px;
+  margin-top: 25px;
+  padding: 10px 10px 0;
+  text-transform: uppercase;
+}
+.card .title {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 10px 0;
+  text-transform: uppercase;
+}
+.card .value {
+  font-size: 28px;
+  padding: 0 10px;
+}
+.card.blue {
+  background-image: linear-gradient(
+    to right,
+    rgb(21, 122, 255),
+    rgb(28, 189, 253)
+  );
+}
+.card.green {
+  background-image: linear-gradient(to right, rgb(0, 194, 16), rgb(0, 216, 47));
+}
+.card.orange {
+  background-image: linear-gradient(
+    to right,
+    rgb(226, 102, 0),
+    rgb(253, 137, 28)
+  );
+}
+.card.red {
+  background-color: #d65b4a;
+}

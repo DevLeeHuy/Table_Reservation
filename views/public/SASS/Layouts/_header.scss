@@ -1,0 +1,23 @@
+.navbar {
+    .navbar-brand {
+        margin-left: 100px !important;
+    }
+    .loginNav {
+        margin-right: 100px;
+    }
+    .navbar-nav {
+        .active {
+            color: $color-red;
+        }
+        .nav-item {
+            .nav-link {
+                @include styleText($color-black-0, $fs-1, $fw-normal);
+                margin: 0 $mg-0;
+                transition: 0.4s;
+                &:hover {
+                    color: $color-blue;
+                }
+            }
+        }
+    }
+}

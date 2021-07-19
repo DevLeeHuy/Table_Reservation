@@ -1,0 +1,30 @@
+.brandPartner{
+    width: 80%;
+    margin: auto;
+    padding: 0 $pd-1;
+    background-color: $color-white-0;
+    .brandPartner__top {
+        // padding: $pd-2 0 0 0;
+        margin: $pd-2 0;
+        .brandPartner__title {
+            @include styleText($color-title, $fs-3, $fw-normal);
+        }
+    }
+    .brandPartner__content{
+        padding:0 0 30px 0;
+        .img-item{
+            position: relative;
+            width: 178px;
+            height: 178px;
+            overflow: hidden;
+            background: #fff;
+            img{
+                max-width: 100%;
+                 position: absolute;
+             top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            }
+        }
+    }
+}

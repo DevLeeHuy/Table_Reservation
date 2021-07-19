@@ -1,0 +1,36 @@
+.news{
+    width: 80%;
+    margin: auto;
+    padding: 0 $pd-1;
+    background-color: $color-white-0;
+    .news__top {
+        // padding: $pd-2 0 0 0;
+        margin: $pd-2 0;
+        .news__title {
+            @include styleText($color-title, $fs-3, $fw-normal);
+        }
+    }
+    .news__content{
+        .news_item{
+            margin-bottom: $mg-1;
+        }
+        .news-link{
+            text-decoration: none;
+        }
+        .card{
+            .card-img-top{
+                height: 330px;
+            }
+            .card-body{
+               
+                .card-title{
+                    @include textLimit();
+                    @include styleText($color-black-0, $fs-0, $fw-bold);
+                }
+                .card-text{
+                    @include styleText($color-darkgray, $fs-0 - 2px, $fw-normal);
+                }
+            }
+        }
+    }
+}

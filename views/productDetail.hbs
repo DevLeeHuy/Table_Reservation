@@ -1,0 +1,393 @@
+{{#section 'css'}}
+<link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
+<link rel="stylesheet" href="css/productDetail.css">
+<link rel="stylesheet" href="css/chatbox.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+{{/section}}
+{{#section 'js'}}
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script>
+    $('#datetimepicker').datetimepicker()</script>
+
+<script>
+    window.onload = () => {
+        var address = document.querySelector('#resAddress').innerHTML;
+        $.get(location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=' + address, function (data) {
+            console.log(data[0].lat);
+            var mymap = L.map('mapid').setView([data[0].lat, data[0].lon], 13);
+            L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=mflwyuRlq6eeBg2YdOa0', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'your.mapbox.access.token'
+            }).addTo(mymap);
+            var marker = L.marker([data[0].lat, data[0].lon]).addTo(mymap);
+
+        })
+
+
+    }
+
+</script>
+
+{{/section}}
+
+<body>
+
+
+    <section class="resDetail">
+        <div class="resDetail__content border">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+                    <div class="resDetail__slideShow">
+                        {{#each this.rImages}}
+                        <div class="mySlides mb-3">
+                            <img src="/img/restaurant/{{resImage}}" style="width:100%" height="350">
+                        </div>
+
+
+                        {{/each}}
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+
+                        <!-- <div class="caption-container">
+                                <p id="caption"></p>
+                              </div> -->
+                        <div class="row">
+                            {{#each this.rImages}}
+
+                            <div class="col-2 ">
+                                <img class="demo cursor" src="/img/restaurant/{{resImage}}" style="width:100%"
+                                    height='50' onclick="currentSlide(1)" alt="The Woods">
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-7">
+                    <div class="resDetail__resName">
+                        <h3>{{Restaurant.resName}}</h3>
+                        <p id="resAddress">{{Restaurant.resAddress}}</p>
+                    </div>
+                    <hr>
+                    <div class="resDetail__btn">
+                        <p class="resDetail__call" data-toggle="modal" data-target="#staticBackdrop"><i
+                                class="fas fa-phone-alt px-2"></i> Gọi để đặt bàn
+                            <span>{{Restaurant.resPhone}}</span>
+                        </p>
+                        <p class="resDetail__rate" data-toggle="modal" data-target="#Rating"><i
+                                class="fas fa-star-half-alt"></i> Đánh giá</p>
+                        <p class="resDetail__menu" data-toggle="modal" data-target="#Menu"><i class="fas fa-hamburger"></i> Xem menu</p>
+                        <p class="resDetail__time"><i class="fa fa-clock"></i> Mở cửa <span>{{Restaurant.resOpen}} -
+                                {{Restaurant.resClose}}</span> </p>
+                        <p class="resDetail__price"><i class="fa fa-dollar-sign"></i> Giá trung bình:
+                            <span>{{formatNumber Restaurant.resPrice}} VND</span>
+                        </p>
+                        <p class="resDetail__rating"><i class="fab fa-gratipay"></i> Mức độ hài lòng:
+                            <span>{{#compare Restaurant.rating 0}}
+                                Chưa có đánh giá
+                                {{else}}
+                                {{Restaurant.rating}}/10⭐(Đã có {{Rating.NumOfReviewers}} người đánh giá)
+                                {{/compare}}
+                            </span>
+                        </p>
+                    </div>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="resIntro border">
+        <div class="resIntro__nav px-3">
+            <a href="#resII">Giới thiệu</a>
+            <a href="#resMap">Bản đồ và tiện ích</a>
+            <hr>
+        </div>
+        <div class="resIntro__content px-3" id="resII">
+            <h3>GIỚI THIỆU</h3>
+            <p>Nhà hàng Nhật - chuyên các món ăn tươi, ngon đặc trưng của Nhật Bản. Với tiêu chí “Chất lượng gấp đôi giá
+                thành” Sushi KO luôn mang đến quý khách hàng những trải nghiệm tốt nhất.
+            </p>
+            <div class="row res__container">
+                <div class="col-12 pb-3">
+                    <img class="w-100" src="/img/restaurant/{{Restaurant.resImage}}" alt="">
+                </div>
+                <div class="col-12 pb-3">
+                    <img class="w-100" src="/img/restaurant/{{Restaurant.resImage}}" alt="">
+                </div>
+                <div class="col-12 pb-3">
+                    <img class="w-100" src="/img/restaurant/{{Restaurant.resImage}}" alt="">
+                </div>
+                <div class="col-12 pb-3">
+                    <img class="w-100" src="/img/restaurant/{{Restaurant.resImage}}" alt="">
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="resIntro__map px-3" id="resMap">
+            <h3>BẢN ĐỒ VÀ TIỆN ÍCH</h3>
+            <div id="mapid" style="width:100%;height:400px;"></div>
+        </div>
+    </section>
+    <section class="resComment ">
+        <div class="resComment__comment ">
+            <div class="d-flex justify-content-center row">
+                <div class="col-12">
+                    <div class="d-flex flex-column comment-section border">
+                        {{#each this.Feedback}}
+                        <div class="bg-white p-2">
+                            <div class="d-flex flex-row user-info"><img class="rounded-circle"
+                                    src="/img/user/{{userPic}}" width="40" height="40">
+                                <div class="d-flex flex-column justify-content-start ml-2"><span
+                                        class="d-block font-weight-bold name">{{userFName}}</span><span
+                                        class="date text-black-50">{{dateFormat fbDate}}</span></div>
+                            </div>
+                            <div class="mt-2">
+                                <p class="comment-text">{{fbContent}}
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="bg-white mb-4">
+                            <div class="d-flex flex-row fs-12">
+                                <div style="color:blue"class="like p-2 cursor"><i class="fa fa-thumbs-up"></i><span
+                                        class="ml-1" >Like</span></div>
+                                <div style="color:rgb(158, 158, 22)" class="like p-2 cursor" onclick="showReplyForm({{@index}})"><i
+                                        class="fa fa-comment" aria-hidden="true"></i><span class="ml-1" >Reply</span>
+                                </div>
+                                <div style="color:rgb(99, 201, 99)" class="like p-2 cursor"><i class="fa fa-share"></i>
+                                    <span class="ml-1">Share</span>
+                                </div>
+                            </div>
+                        </div>
+                        {{#each ../this.Reply}}
+                        {{#compare fbID ../feedbackID operator="=="}}
+                        <div class="bg-light p-2 w-75 mx-auto ">
+                            <div class="d-flex flex-row user-info"><img class="rounded-circle"
+                                    src="/img/user/{{userPic}}" width="40">
+                                <div class="d-flex flex-column justify-content-start ml-2"><span
+                                        class="d-block font-weight-bold name">{{userFName}} </span><span
+                                        class="date text-black-50">{{dateFormat repDate}}</span></div>
+                            </div>
+                            <div class="mt-2">
+                                <p class="comment-text"><span
+                                        class="rootCommentUser font-weight-bold">{{../userFName}}</span>: {{repContent}}
+                                </p>
+                            </div>
+                        </div>
+                        {{/compare}}
+                        {{/each}}
+
+                        <form method="POST" class="bg-light w-75 mx-auto p-2 mt-3 border replyForm">
+                            <div class="d-flex flex-row align-items-start">
+                                <img class="rounded-circle" src="/img/user/{{../user.userPic}}" width="40">
+                                <textarea name="replyContent" class="form-control ml-1 shadow-none textarea"></textarea>
+                            </div>
+                            <div class="mt-2 text-right">
+                                <button class="btn btn-primary btn-sm shadow-none submitButton" type="submit"
+                                    formaction="/resDetail/reply?resID={{resID}}&fbID={{feedbackID}}">Submit</button>
+                                <button class="btn btn-danger btn-sm ml-1 shadow-none buttonClose"
+                                    type="button">X</button>
+                            </div>
+                        </form>
+                        {{/each}}
+                        <form method="POST" class="bg-light p-2 mt-3 border feedbackForm">
+                            <div class="d-flex flex-row align-items-start">
+                                <img class="rounded-circle" src="/img/user/{{user.userPic}}" width="40" height="40">
+                                <textarea name="feedbackContent"
+                                    class="form-control ml-1 shadow-none textarea"></textarea>
+                            </div>
+                            <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none submitButton"
+                                    type="submit" formaction="">Submit</button><button
+                                    class="btn btn-outline-primary btn-sm ml-1 shadow-none"
+                                    type="button">Cancel</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+    <form action="/booking" method="post" class="datbanContainer" id="form-reservation">
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="staticBackdropLabel">Đặt Nhà Hàng</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-dark">
+                        <h3 class="modal-brandname text-danger">
+                            {{Restaurant.resName}}
+                        </h3>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input id="datetimepicker" name="ReserveTime" class="form-control form-input"
+                                        type="text" rules="isRequired|isValidDate" placeholder="Chọn ngày và giờ đặt"
+                                        autocomplete="off">
+                                    <span class="error-control"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control form-input" name="NumOfDiners" id=""
+                                        rules="isRequired" placeholder="Số người">
+                                    <span class="error-control"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <p>Thông tin & liên hệ</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-input" rules="isRequired" {{#if
+                                                user}} value="{{user.userFName}}" {{/if}}
+                                                placeholder="Điền tên của bạn">
+                                            <span class="error-control"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-input" name="phone" rules="isRequired|isPhone" {{#if
+                                                user}} value="{{user.userPhone}}" {{/if}}
+                                                placeholder="Điền số điện thoại của bạn">
+                                            <span class="error-control"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-input" name="Email" rules="isRequired" {{#if
+                                                user}} value="{{user.userEmail}}" {{/if}} placeholder="Điền email của bạn">
+                                            <span class="error-control"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea id="" cols="30" rows="10" class="form-control my-2"
+                                            placeholder="Ghi chú" name="Note"></textarea>
+                                    </div>
+
+                                    <div class="col-12 	">
+                                        <a class="btn btn-secondary font-weight-bold">Sử dụng voucher</a>
+                                        <select name="vouID">
+                                            <option value="">Không sử dụng</option>
+                                            {{#each this.voucher}}
+                                            <option value="{{vouID}}">{{vouKey}} (-{{vouValue}}%) </option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+
+
+                            <input type="hidden" name="rid" value="{{Restaurant.resID}}">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-warning">Đặt Chỗ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form action="/rating" method="post">
+        <div class="modal fade" id="Rating" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="staticBackdropLabel">Mức độ hài lòng của bạn (Thang điểm
+                            10)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="rating">
+                            <span class="rating-btn">😡</span>
+                            <span class="rating-btn">😣</span>
+                            <span class="rating-btn">😔</span>
+                            <span class="rating-btn">🙁</span>
+                            <span class="rating-btn">😐</span>
+                            <span class="rating-btn">🙂</span>
+                            <span class="rating-btn">😊</span>
+                            <span class="rating-btn">😁</span>
+                            <span class="rating-btn">😆</span>
+                            <span class="rating-btn">🤗</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="rid" value="{{Restaurant.resID}}">
+                        <input type="hidden" name="rating" value="" id="rating-point">
+                        <button class="btn btn-warning">Submit</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    
+    <div id="chat-bot">
+        <div class="messenger br10">
+            <div class="timestamp">04:45 AM</div>
+            <!-- msgs  -->
+            <div class="chatroom">
+
+            </div>
+            <!-- msgs  -->
+            <div class="type-area">
+                <input type="text" class="typing" placeholder="Type Here...">
+                <span class="send">
+                    <i class="fas fa-paper-plane"></i>
+                </span>
+            </div>
+        </div>
+        <div class="icon">
+            <div class="user">
+                <i class="fas fa-utensils"></i>
+                TO: {{Restaurant.resName}} restaurant
+            </div>
+            <i class="fab fa-facebook-messenger"></i>
+        </div>
+
+    </div>  
+     <input type="hidden" id="resID" value="{{Restaurant.resID}}">
+ <input type="hidden" id="restaurant" value="{{Restaurant.resName}}">
+<input type="hidden" id="rid" value="{{Restaurant.managerID}}">
+<input type="hidden" id="uid" value="{{#if user}}{{user.userID}}{{else}}customer{{/if}}">
+<input type="hidden" id="type" value="Customer">
+    <script src="/vendor/jquery/jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chatbox.js"></script>
+    <script src="/js/productDetail.js"></script>
+    <script src="/js/validate.js"></script>
+    <script>
+        new Validator("#form-reservation");
+    </script>
+</body>
+
+</html>

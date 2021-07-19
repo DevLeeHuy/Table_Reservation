@@ -1,0 +1,61 @@
+footer{
+    background-color:red !important;
+    padding: 0 0 30px 0;
+    margin-top: 150px;
+    color: $color-black-0;
+    .footer__congTy{
+        h5{
+            @include styleText($color-black-0,$fs-2,$fw-normal);
+            margin-bottom: $mg-0 + 7px;
+        }
+        a{
+            text-decoration: none;
+            @include styleText($color-blue,$fs-0,$fw-normal);
+        }
+    }
+    .footer__app{
+        h5{
+            @include styleText($color-black-0,$fs-2,$fw-normal);
+            margin-bottom: $mg-0 + 7px;
+        }
+        li{
+            margin-bottom: $mg-1 + 10px;
+        }
+        .btn-cus{
+            width: 120px;
+           text-align: center;
+           @include styleButton($color-white-0,$color-black-0,$pd-1,$pd-2,0px);
+           @include styleText($color-title,$fs-2,$fw-normal);
+           i{
+               padding-right: $pd-1;
+           }
+           &:hover{
+              color: $color-blue;
+              border-color: $color-blue; 
+           }
+        }
+    }
+    .footer__logo{
+        text-align: center;
+        ul{
+            li{
+                display: inline;
+                a{
+                    padding: 0 $pd-0;
+                     @include styleText($color-darkgray,$fs-5,$fw-normal); 
+                }
+            }  
+        }
+    }
+    .footer__diachi{
+        h5{
+            @include styleText($color-black-0,$fs-2,$fw-normal);
+            margin-bottom: $mg-0 + 7px;
+        }
+        li{
+            span{
+                @include styleText($color-title,$fs-0,$fw-normal);
+            }
+        }
+    }
+}

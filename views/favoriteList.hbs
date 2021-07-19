@@ -1,0 +1,67 @@
+<section class="listTable border mt-6" id="nhaHang">
+  <div class="listTable__top">
+    <div class="listTable__title">
+      <h3>ĐỊA ĐIỂM</h3>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Tìm danh mục
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Buffet</a>
+        <a class="dropdown-item" href="#">Món Âu</a>
+        <a class="dropdown-item" href="#">Món Nhật</a>
+        <a class="dropdown-item" href="#">Món Thái</a>
+      </div>
+    </div>
+  </div>
+  <div class="listTable__content">
+    <div class="row">
+      {{#each this.FavoriteList}}
+      <div class="col-3 listTable__card mb-4 mt-4">
+        <div class="card text-white h-100 ">
+          <div class="card-img">
+            <img class="card-img-top " height="220"  src="/img/restaurant/{{resThumbnail}}" alt="" />
+            <div class="card-overlay">
+              <a href="/resDetail?id={{resID}}"><button>Đặt ngay</button></a>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="card-title border-bottom">
+              <p class="card-text">{{resName}}</p>
+              <p class="card-text">{{resAddress}}</p>
+            </div>
+            <h4 class="card-subtitle pb-2"><span>{{resOpen}} --> {{resClose}}
+                <span style="color: black;">-</span></span>
+              Giảm 20%</h4>
+          </div>
+           <span class="ml-4 mb-2" style="color: black; font-weight: bold;">{{#compare rating 0}} 
+                                    Chưa có đánh giá
+                                    {{else}}
+                                        {{rating}}/10⭐
+                                    {{/compare}}
+                            </span>
+          <a href="/favorite/{{resID}}" class="favorite-btn mb-0">
+            <button type="button" class="btn btn-outline-danger">
+              {{#if ../user}}
+                {{#if ../session.favoriteList}}
+                {{#exist resID ../session.favoriteList}}
+                  <i class="fas fa-heart"></i>
+                    {{else}}
+                      <i class="far fa-heart"></i>
+                {{/exist}}
+                {{else}}
+                 <i class="far fa-heart"></i>
+                 {{/if}}
+              {{else}}
+                <i class="far fa-heart"></i>
+              {{/if}}
+            </button>
+          </a>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+</section>

@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand ml-5" href="/"><img
+      style="width:50px"
+      src="/img/logo.png"
+      alt="bay gio"
+    /></a>
+  <button
+    class="navbar-toggler d-lg-none"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTableNe"
+    aria-controls="collapsibleNavId"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse text-center" id="navbarTableNe">
+    <ul class="navbar-nav mx-auto mt-3">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Trang chủ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#uuDai">Ưu đãi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#nhaHang">Nhà hàng</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#baiViet">Bài viết</a>
+      </li>
+    </ul>
+    {{#if user}}
+      <div class="loginNav">
+        <li class="nav-item nav-itemspe dropdown font-weight-bold userDropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarScrollingDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{! <i class="fas fa-search searchIcon"></i> }}
+            <img class="userAvatar" src="/img/user/{{user.userPic}}" alt="" />
+            {{user.userFName}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#"><i class="far fa-user"></i>
+                Người dùng:
+                {{user.userNameID}}</a></li>
+            <li><a class="dropdown-item" href="/profile"><i
+                  class="fas fa-user-circle"
+                ></i>
+                Cập nhật tài khoản
+              </a></li>
+            {{#compare user.userType 2}}
+              <li><a class="dropdown-item" href="/manager"><i
+                    class="fas fa-utensils"
+                  ></i>
+                  Quản lí nhà hàng
+                </a></li>
+
+            {{/compare}}
+            {{#compare user.userType 1}}
+              <li><a class="dropdown-item" href="/admin"><i
+                    class="fas fa-tasks"
+                  ></i>
+                  Quản lí website
+                </a></li>
+
+            {{/compare}}
+            <li><a class="dropdown-item" href="#"><i
+                  class="fas fa-user-lock"
+                ></i>
+                Loại
+                {{#compare 1 user.userType operator="=="}}
+                  Admin
+                {{else}}{{#compare 2 user.userType operator="=="}}
+                    Mannager
+                  {{else}}
+                    Diner
+                  {{/compare}}{{/compare}}
+              </a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="/favoriteList"><i
+                  class="fab fa-gratipay"
+                ></i>
+                Danh sách yêu thích</a></li>
+            <li><a class="dropdown-item" href="/help"><i
+                  class="far fa-question-circle"
+                ></i>
+                Help</a></li>
+            <li><a class="dropdown-item" href="/logout"><i
+                  class="fas fa-sign-out-alt"
+                ></i>
+                Đăng xuất</a></li>
+          </ul>
+        </li>
+      </div>
+    {{else}}
+      <div class="loginNav">
+
+        <a class="btn btn-outline-primary" href="/login">Đăng nhập</a>
+        <a class="btn btn-warning" href="/signup">Đăng ký</a>
+      </div>
+    {{/if}}
+  </div>
+
+</nav>

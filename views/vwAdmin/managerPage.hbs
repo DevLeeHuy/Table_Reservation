@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="css/dashboard.css" />
+
+
+
+
+<div class="container-fluid">
+  {{#each session.myRestaurant}}
+    <div class="eachRes">
+      <h2>Doanh thu nhà hàng: {{resName}} <button class="float-right mt-4 btn btn-danger reset-btn" reset-link="/manager/resetRevenues/{{resID}}">RESET REVENUES</button></h2>
+      <div class="chart-container  " resID="{{resID}}" rating="{{rating}}">
+        <div class="pieChart" id="pieChart-{{resID}}"></div>
+        <div class="colChart" id="columnChart-{{resID}}"></div>
+        {{#each ../session.revenues}}
+            {{#compare ../resID rid operator="=="}}
+                <input type="hidden" class="quantity-{{../resID}}" value="{{quantity}}">
+            {{/compare}}
+        {{/each}}
+      </div>
+    </div> 
+  {{/each}}
+</div>
+
+
+
+<script
+  type="text/javascript"
+  src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"
+></script>
+<!-- Include fusion theme -->
+<script
+  type="text/javascript"
+  src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"
+></script>
+
+<script src="js/manager_dashboard.js"></script>
+
